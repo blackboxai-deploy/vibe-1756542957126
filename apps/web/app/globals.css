@@ -1,0 +1,409 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.5rem;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  
+  /* Hospity.AI Brand Colors */
+  --hospity-primary: 221.2 83.2% 53.3%;
+  --hospity-secondary: 142.1 76.2% 36.3%;
+  --hospity-accent: 38.4 92.0% 50.2%;
+  --hospity-success: 142.1 76.2% 36.3%;
+  --hospity-warning: 38.4 92.0% 50.2%;
+  --hospity-error: 0 84.2% 60.2%;
+  --hospity-info: 199.4 89.2% 48.4%;
+  
+  /* Kitchen Panel Colors */
+  --kitchen-new: 142.1 76.2% 36.3%;
+  --kitchen-preparing: 38.4 92.0% 50.2%;
+  --kitchen-ready: 221.2 83.2% 53.3%;
+  --kitchen-delivered: 215.4 16.3% 46.9%;
+  
+  /* Driver Status Colors */
+  --driver-available: 142.1 76.2% 36.3%;
+  --driver-assigned: 38.4 92.0% 50.2%;
+  --driver-pickup: 221.2 83.2% 53.3%;
+  --driver-delivering: 199.4 89.2% 48.4%;
+  --driver-completed: 215.4 16.3% 46.9%;
+  
+  /* Booking Status Colors */
+  --booking-available: 142.1 76.2% 36.3%;
+  --booking-pending: 38.4 92.0% 50.2%;
+  --booking-confirmed: 221.2 83.2% 53.3%;
+  --booking-checkedin: 199.4 89.2% 48.4%;
+  --booking-completed: 215.4 16.3% 46.9%;
+  --booking-cancelled: 0 84.2% 60.2%;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 84% 4.9%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 94.1%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* Loading animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* Kitchen Panel Specific Styles */
+.kitchen-order-card {
+  @apply border-l-4 transition-all duration-300 hover:shadow-lg;
+}
+
+.kitchen-order-new {
+  border-left-color: hsl(var(--kitchen-new));
+}
+
+.kitchen-order-preparing {
+  border-left-color: hsl(var(--kitchen-preparing));
+}
+
+.kitchen-order-ready {
+  border-left-color: hsl(var(--kitchen-ready));
+}
+
+.kitchen-order-delivered {
+  border-left-color: hsl(var(--kitchen-delivered));
+}
+
+/* Driver App Specific Styles */
+.driver-status-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.driver-available {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+}
+
+.driver-assigned {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200;
+}
+
+.driver-pickup {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200;
+}
+
+.driver-delivering {
+  @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200;
+}
+
+.driver-completed {
+  @apply bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200;
+}
+
+/* QR Menu Specific Styles */
+.menu-item-card {
+  @apply bg-card border rounded-lg p-4 transition-all duration-200 hover:shadow-md hover:scale-[1.02];
+}
+
+.menu-category-header {
+  @apply sticky top-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10 py-2;
+}
+
+/* Booking Calendar Styles */
+.calendar-day {
+  @apply aspect-square flex items-center justify-center text-sm border rounded-md cursor-pointer transition-colors;
+}
+
+.calendar-day-available {
+  @apply hover:bg-primary/10 hover:text-primary;
+}
+
+.calendar-day-booked {
+  @apply bg-muted text-muted-foreground cursor-not-allowed;
+}
+
+.calendar-day-selected {
+  @apply bg-primary text-primary-foreground;
+}
+
+/* Analytics Dashboard Styles */
+.metric-card {
+  @apply bg-card border rounded-lg p-6 transition-all duration-200 hover:shadow-md;
+}
+
+.metric-value {
+  @apply text-2xl font-bold text-foreground;
+}
+
+.metric-label {
+  @apply text-sm text-muted-foreground;
+}
+
+.metric-change {
+  @apply text-xs font-medium;
+}
+
+.metric-change-positive {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.metric-change-negative {
+  @apply text-red-600 dark:text-red-400;
+}
+
+/* AI Chat Interface Styles */
+.chat-message {
+  @apply flex gap-3 p-4 rounded-lg;
+}
+
+.chat-message-user {
+  @apply bg-primary/10 ml-12;
+}
+
+.chat-message-assistant {
+  @apply bg-muted mr-12;
+}
+
+.chat-avatar {
+  @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium;
+}
+
+.chat-avatar-user {
+  @apply bg-primary text-primary-foreground;
+}
+
+.chat-avatar-assistant {
+  @apply bg-secondary text-secondary-foreground;
+}
+
+/* Payment Form Styles */
+.payment-form {
+  @apply space-y-4 p-6 bg-card border rounded-lg;
+}
+
+.stripe-element {
+  @apply p-3 border rounded-md bg-background;
+}
+
+.stripe-element--focus {
+  @apply ring-2 ring-primary ring-offset-2;
+}
+
+.stripe-element--invalid {
+  @apply border-destructive;
+}
+
+/* Mobile Responsive Utilities */
+@media (max-width: 640px) {
+  .mobile-hide {
+    display: none;
+  }
+  
+  .mobile-full {
+    width: 100%;
+  }
+  
+  .mobile-stack {
+    flex-direction: column;
+  }
+}
+
+/* Print Styles for Kitchen Orders */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .kitchen-order-card {
+    break-inside: avoid;
+    border: 1px solid #000;
+    margin-bottom: 1rem;
+  }
+  
+  body {
+    color: #000;
+    background: #fff;
+  }
+}
+
+/* Focus styles for accessibility */
+.focus-visible:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-offset-2;
+}
+
+/* Custom utility classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animation delays for staggered effects */
+.animate-delay-75 {
+  animation-delay: 75ms;
+}
+
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-150 {
+  animation-delay: 150ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animate-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animate-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-hospity {
+  background: linear-gradient(135deg, hsl(var(--hospity-primary)) 0%, hsl(var(--hospity-secondary)) 100%);
+}
+
+.bg-gradient-kitchen {
+  background: linear-gradient(135deg, hsl(var(--kitchen-new)) 0%, hsl(var(--kitchen-ready)) 100%);
+}
+
+.bg-gradient-driver {
+  background: linear-gradient(135deg, hsl(var(--driver-available)) 0%, hsl(var(--driver-delivering)) 100%);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
